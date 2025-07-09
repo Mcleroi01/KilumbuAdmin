@@ -1,0 +1,56 @@
+[
+    {
+        "id": "1",
+        "nom": "Agostinho Neto",
+        "dateNais": "1922-09-17",
+        "dateMandat": "1975-11-11 / 1979-09-10",
+        "description": "António Agostinho Neto (Ícolo e Bengo, 17 de setembro de 1922 – Moscovo, 10 de setembro de 1979) foi um médico, escritor e político angolano, principal figura do país no século XX.\n\nFoi Presidente do Movimento Popular de Libertação de Angola e em 1975 tornou-se o primeiro Presidente de Angola até 1979. Em 1975-1976 foi-lhe atribuído o Prémio Lenine da Paz.",
+        "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlVQf586yUnkBzWZFLpfcf9m4onXcj6_vQ6Q&s",
+        "photos": [
+            "https://jornal24horas.ao/wp-content/uploads/2022/09/AGOSTINHO-NETO.jpg",
+            "https://www.giranoticias.com/_midias/jpg/2022/05/06/800x600/1_agostinho_neto2-304761.jpg",
+            "https://marimba.selutu.com/wp-content/uploads/2022/11/Centenario_Neto_Noticia_1.jpg",
+            "https://diarioindependente.info/wp-content/uploads/2024/10/neto-savimbo-holder.jpeg",
+            "https://rna.ao/rna.ao/wp-content/uploads/2022/11/Agostinho-Neto-poeta-e-primeiro-presidente-de-Angola.-Foto-DR-1.jpg"
+        ],
+        "profissao": "Médico, Poeta, Político",
+        "partido": "MPLA",
+        "religiao": "Cristianismo"
+    },
+    {
+        "id": "2",
+        "nom": "José Eduardo dos Santos",
+        "dateNais": "1942-08-28",
+        "dateMandat": "1979-09-21 / 2017-09-26",
+        "description": "José Eduardo Van-Dúnem dos Santos (Luanda, 28 de agosto de 1942 – Barcelona, 8 de julho de 2022) foi um engenheiro, militar e político angolano que serviu como Presidente de Angola de 1979 a 2017. Como presidente, José Eduardo dos Santos também foi comandante-em-chefe das Forças Armadas Angolanas (FAA) e presidente do Movimento Popular de Libertação de Angola (MPLA), o partido que tem governado Angola desde que obteve independência em 1975.\n\nUma figura controversa, José Eduardo dos Santos recebeu muitos prêmios internacionais por seu compromisso com o anticolonialismo e promoção de negociações de paz com rebeldes para acabar com as guerras locais, tendo sido também elogiado por melhorar a economia de Angola e atrair investimentos estrangeiros significativos. Ao mesmo tempo, ele foi acusado de ser ditador e de criar um dos regimes mais corruptos da África, com uma rede de clientelismo profundamente arraigada.",
+        "imagePath": "https://cdn.allafrica.com/download/pic/main/main/csiid/00610180:58a03a7a8a14f73c2a512ba5eab36175:arc614x376:w735:us1.jpg",
+        "photos": [
+            "https://pt.globalvoices.org/wp-content/uploads/2016/01/Presidente_de_la_Rep%C3%BAblica_de_Angola_Jos%C3%A9_Eduardo_dos_Santos-800x450.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBtonObDvnnO-HNK6oVBuM4waP8Y8fyYxSOA&s",
+            "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/645C/production/_124729652_gettyimages-51974699.jpg.webp",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-BvdJl8PPORCrFBFszPQcunsZofr-ZiHNwA&s",
+            "https://correiokianda.info/wp-content/uploads/2020/12/Jose-Eduardo-dos-Santos-e-Isabel-dos-Santos-1000x600.png"
+        ],
+        "profissao": "Engenheiro, Político",
+        "partido": "MPLA",
+        "religiao": "Católico"
+    },
+    {
+        "id": "3",
+        "nom": "João Lourenço",
+        "dateNais": "1954-03-05",
+        "dateMandat": "2017-09-26 / presente",
+        "description": "João Manuel Gonçalves Lourenço GColIH (Lobito, 5 de março de 1954) é um militar, historiador e político angolano, presidente de Angola desde 2017 e presidente da União Africana desde 2025. Passou por várias posições dentro do partido e no Estado angolano, incluindo deputado da Assembleia Nacional entre 1986 e 2017, presidente do Grupo Parlamentar do Movimento Popular de Libertação de Angola (MPLA) entre 1993 e 1998, 1.º Vice-Presidente da Assembleia Nacional entre 2003 e 2014 e Ministro da Defesa de Angola entre 2014 e 2017. No dia 3 de fevereiro de 2017, na 3ª. Reunião Ordinária do MPLA, foi oficialmente anunciado como cabeça de lista do MPLA nas eleições de agosto de 2017. Vencedor das eleições de 2017, foi o cabeça de lista do MPLA na disputa pela reeleição, vencendo as eleições gerais de Angola de 2022.",
+        "imagePath": "https://static.euronews.com/articles/stories/07/43/63/04/1536x864_cmsv2_4b41ef19-8556-545c-8aef-5c70b69c2a4d-7436304.jpg",
+        "photos": [
+            "https://www.giranoticias.com/_midias/jpg/2025/06/27/900x506/1_pr_joao_lourenco-390044.jpeg",
+            "https://estamosjuntos.co.ao/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-08-at-19.47.13-1.jpeg",
+            "https://www.opais.ao/wp-content/uploads/2025/03/joao-lourenco.webp",
+            "https://gdb.voanews.com/3b2ba0e0-0fbb-4489-8b72-a09b14e436e2_w408_r1_s.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxgBLKTc6VfegHe8fn1wdViKkHs_D8zvaa6KyhueQWtx56d_-hTnDM83lzaPbh_iEefl0&usqp=CAU"
+        ],
+        "profissao": "Militar, Historiador, Político",
+        "partido": "MPLA",
+        "religiao": "Cristianismo"
+    }
+]

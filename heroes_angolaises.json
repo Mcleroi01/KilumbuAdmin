@@ -1,0 +1,176 @@
+[
+    {
+        "id": "1",
+        "nome": "Agostinho Neto",
+        "biografia": "António Agostinho Neto foi o primeiro presidente da Angola independente e uma figura central na luta contra o colonialismo português.",
+        "imageUrl": "https://www.opais.ao/wp-content/uploads/2023/03/4fedfc89-0ec2-49a9-82dd-00e8c66cb40e-jpeg.webp",
+        "localNascimento": "Ícolo e Bengo, Luanda",
+        "dataNascimento": "1922-09-17",
+        "dataFalecimento": "1979-09-10",
+        "contexteHistorico": "Liderou o MPLA na luta de libertação nacional e se tornou o primeiro presidente de Angola após a independência em 1975.",
+        "contribuicoes": [
+            "Liderança do MPLA",
+            "Independência de Angola",
+            "Desenvolvimento da consciência política",
+            "Poésie et œuvre littéraire engagée"
+        ],
+        "citations": [
+            "A luta continua.",
+            "Não basta libertar o país, é preciso libertar o povo."
+        ],
+        "reconhecidoOficialmente": true,
+        "dataReconhecimento": "1980-11-11",
+        "hommages": [
+            "Dia do Herói Nacional (17 de setembro)",
+            "Universidade Agostinho Neto",
+            "Estátuas em Luanda e em outras províncias"
+        ]
+    },
+    {
+        "id": "2",
+        "nome": "Deolinda Rodrigues",
+        "biografia": "Foi uma ativista e combatente da luta de libertação nacional angolana, símbolo da resistência feminina.",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt5MZlKdZ8JgFbzFLnku9p1S35lS1qp8tXB2NPnnewOTrw2cv4-WZ5lzFfJ881LOZXqaM&usqp=CAU",
+        "localNascimento": "Golungo Alto, Cuanza Norte",
+        "dataNascimento": "1939-02-10",
+        "dataFalecimento": "1967-03-02",
+        "contexteHistorico": "Participou ativamente do MPLA e da Organização das Mulheres Angolanas. Foi capturada e morta durante a luta.",
+        "contribuicoes": [
+            "Mobilização feminina na luta armada",
+            "Escrita e jornalismo revolucionário",
+            "Formação de redes de apoio à independência"
+        ],
+        "citations": [
+            "A mulher angolana deve estar onde está o combate.",
+            "A liberdade é uma flor que precisa de sangue para florescer."
+        ],
+        "reconhecidoOficialmente": true,
+        "dataReconhecimento": "2015-03-02",
+        "hommages": [
+            "Dia da Mulher Angolana (2 de março)",
+            "Filme 'Langidila - Diário de um exílio sem regresso'"
+        ]
+    },
+    {
+        "id": "3",
+        "nome": "Nzinga Mbande",
+        "biografia": "Rainha do Ndongo e Matamba, lutou contra a colonização portuguesa no século XVII com diplomacia e força militar.",
+        "imageUrl": "https://brafrika.com.br/cdn/shop/articles/WhatsApp_Image_2024-03-08_at_09.16.19_1_1200x1200.jpg?v=1709900810",
+        "localNascimento": "Reino do Ndongo",
+        "dataNascimento": "1583",
+        "dataFalecimento": "1663",
+        "contexteHistorico": "Líder militar e diplomática, Nzinga resistiu à colonização portuguesa e é um símbolo de resistência africana.",
+        "contribuicoes": [
+            "Resistência à colonização portuguesa",
+            "Diplomacia e alianças estratégicas",
+            "Símbolo de luta pela soberania africana"
+        ],
+        "citations": [
+            "A liberdade é o maior bem que podemos conquistar.",
+            "Não há paz sem justiça."
+        ],
+        "reconhecidoOficialmente": false,
+        "dataReconhecimento": null,
+        "hommages": [
+            "Dia da Mulher Angolana (2 de março)",
+            "Estátuas em Luanda e outras cidades"
+        ]
+    },
+    {
+        "id": "4",
+        "nome": "Jonas Savimbi",
+        "biografia": "Jonas Malheiro Sidónio Sakaita Savimbi nasceu a 3 de agosto de 1934, na vila-comuna de Munhango, uma localidade pertencente ao município do Cuemba, na província Bié. Seu pai era Lotte Malheiro Savimbi, um funcionário da Companhia do Caminho de Ferro de Benguela e também pastor da Igreja Evangélica Congregacional em Angola (IECA). Sua mãe era Helena Mbundu Sakaita Malheiro Savimbi, trabalhadora doméstica. Os pais eram originários de Chilesso, uma aldeia de Andulo, na mesma província, pertencentes ao grupo bieno da etnia ovimbunda. Sakaita Savimbi — pai de Lotte, avô de Jonas — esteve envolvido nas batalhas contra os portugueses na Segunda Guerra Luso-Ovimbundo em 1902. Jonas Savimbi passou a sua juventude em Chilesso, onde frequentou o ensino primário e parte do ensino secundário em escolas da IECA. Como naquele tempo os diplomas das escolas protestantes não eram reconhecidos, repetiu a parte secundária no Huambo, numa escola católica mantida pelo Instituto dos Irmãos Maristas. Destacou-se academicamente e foi elegível para uma bolsa de estudos providenciada pela IECA estadunidense para concluir o ensino secundário e estudar medicina na Universidade de Lisboa, em Portugal, a partir de 1958. Não conseguiu matricular-se em medicina devido à recusa de frequentar o curso liceal obrigatório de 'Organização Política Nacional', sustentado no espírito do salazarismo e do lusotropicalismo colonialista. O período em Lisboa, entretanto, lhe serviu para entrar em contacto com um grupo de estudantes angolanos vinculados ao Partido Comunista Português que propagavam em segredo a descolonização e discutiam a fundação de uma organização de luta anticolonial. Encontrou-se particularmente com Agostinho Neto, já uma importante liderança anticolonial. No período em Portugal, demonstrou ser um orador carismático e um organizador capaz, porém já demarcando fortemente sua concepção de luta revolucionária armada que incluía elementos de negritude. O destaque que ganhou no período foi monitorado pela Polícia Internacional e de Defesa do Estado (PIDE), que passou a ameaçar Savimbi de prisão, com ajuda de comunistas portugueses e franceses. A partir de contactos obtidos por intermédio da IECA, conseguiu uma segunda bolsa de estudos universitária. Como a Suíça reconheceu os seus estudos secundários como completos, formou-se em sociologia na Universidade de Friburgo. Savimbi aproveitou a sua estadia na Suíça para aperfeiçoar o seu domínio do inglês e do francês, línguas que chegou a falar fluentemente. Manteve uma rede de contactos políticos com outros estudantes africanos e ativistas anticoloniais em Lausana, Champex e Genebra, que lhe apresentaram a Holden Roberto em agosto de 1960. Roberto, já considerado uma figura central na militância anticolonial em Angola, convidou Savimbi a juntar-se à União das Populações de Angola (UPA), que posteriormente tornou-se Frente Nacional de Libertação de Angola (FNLA). A intermediação para a filiação formal à FNLA/UPA foi dada, em 1961, por Tom Mboya e Jomo Kenyatta.",
+        "imageUrl": "https://cdn.unitycms.io/images/9y2Lzvhoa2Q92HBg-3-L_h.jpg?op=ocroped&val=1200,600,1000,1000,0,0&sum=uwqGDhtwlh8",
+        "localNascimento": "Munhango, Bié",
+        "dataNascimento": "3 de agosto de 1934",
+        "dataFalecimento": "22 de fevereiro de 2002",
+        "contexteHistorico": "Fundador e líder da UNITA, uma das principais forças na Guerra Civil Angolana. A sua luta foi marcada por uma forte oposição ao governo do MPLA.",
+        "contribuicoes": [
+            "Fundação da UNITA",
+            "Liderança militar na Guerra Civil Angolana",
+            "Papel central nas negociações de paz e conflito em Angola"
+        ],
+        "citations": [
+            "A minha vida é a história da UNITA, e a história da UNITA é a história de Angola.",
+            "A democracia não se come, mas sem ela não se pode comer em paz."
+        ],
+        "reconhecidoOficialmente": false,
+        "dataReconhecimento": null,
+        "hommages": [
+            "Figura controversa e central na história recente de Angola."
+        ]
+    },
+    {
+        "id": "5",
+        "nome": "Lúcio Lara",
+        "biografia": "Lúcio Lara foi um destacado político e intelectual angolano, membro do MPLA e uma figura chave na luta pela independência de Angola.",
+        "imageUrl": "https://www.telanon.info/wp-content/uploads/2016/03/luciolara.jpg",
+        "localNascimento": "Luanda",
+        "dataNascimento": "1929-01-01",
+        "dataFalecimento": "2016-01-01",
+        "contexteHistorico": "Lúcio Lara foi um dos principais líderes do MPLA e desempenhou um papel crucial na luta pela independência de Angola.",
+        "contribuicoes": [
+            "Liderança no MPLA",
+            "Contribuições intelectuais e políticas para a independência de Angola"
+        ],
+        "citations": [
+            "A luta pela liberdade é a luta por dignidade.",
+            "Angola é um país que merece ser livre."
+        ],
+        "reconhecidoOficialmente": false,
+        "dataReconhecimento": null,
+        "hommages": [
+            "Estátuas e homenagens em Luanda",
+            "Dia Nacional de Lúcio Lara"
+        ]
+    },
+    {
+        "id": "6",
+        "nome": "José Eduardo dos Santos",
+        "biografia": "José Eduardo dos Santos foi o segundo presidente de Angola, governando de 1979 a 2017. Ele desempenhou um papel crucial na reconstrução do país após a guerra civil.",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBtonObDvnnO-HNK6oVBuM4waP8Y8fyYxSOA&s",
+        "localNascimento": "Luanda",
+        "dataNascimento": "1942-08-28",
+        "dataFalecimento": "2022-07-08",
+        "contexteHistorico": "Assumiu a presidência em 1979 e governou até 2017, sendo uma figura central na política angolana.",
+        "contribuicoes": [
+            "Reconstrução pós-guerra",
+            "Desenvolvimento econômico e social",
+            "Promoção da paz e estabilidade"
+        ],
+        "citations": [
+            "Angola é um país de oportunidades.",
+            "A paz é o maior bem que podemos conquistar."
+        ],
+        "reconhecidoOficialmente": false,
+        "dataReconhecimento": null,
+        "hommages": [
+            "Dia Nacional da Paz (4 de abril)",
+            "Estátuas em Luanda e outras cidades"
+        ]
+    },
+    {
+        "id": "7",
+        "nome": "Mário Pinto de Andrade",
+        "biografia": "Mário Pinto de Andrade foi um intelectual, político e um dos fundadores do MPLA. Ele desempenhou um papel importante na luta pela independência de Angola.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/42/Mariopandrade.jpg",
+        "localNascimento": "Luanda",
+        "dataNascimento": "1928-01-01",
+        "dataFalecimento": "1990-01-01",
+        "contexteHistorico": "Andrade foi uma figura central no MPLA e contribuiu significativamente para a luta pela independência de Angola.",
+        "contribuicoes": [
+            "Intelectualismo político",
+            "Contribuições para a literatura angolana"
+        ],
+        "citations": [
+            "A liberdade é o maior bem que podemos conquistar.",
+            "Angola é um país que merece ser livre."
+        ],
+        "reconhecidoOficialmente": false,
+        "dataReconhecimento": null,
+        "hommages": [
+            "Estátuas e homenagens em Luanda",
+            "Dia Nacional de Mário Pinto de Andrade"
+        ]
+    }
+]

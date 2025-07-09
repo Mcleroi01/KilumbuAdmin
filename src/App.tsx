@@ -5,6 +5,10 @@ import DashboardLayout from './components/layout/DashboardLayout';
 import Dashboard from './pages/Dashboard';
 import Provinces from './pages/Provinces';
 import ComingSoon from './pages/ComingSoon';
+import Heroes from './pages/Heroes';
+import Linguas from './pages/linguas';
+import Parcs from './pages/Parcs';
+import Presidents from './pages/Presidents';
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading } = useAuth();
@@ -29,32 +33,18 @@ const AppRoutes = () => {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/provinces" element={<Provinces />} />
-          <Route 
-            path="/heroes" 
+          <Route path="/heroes" element={<Heroes />} />
+          <Route path="/languages" element={<Linguas />} />
+          <Route path="/parcs" element={<Parcs />} />
+          <Route path="/presidents" element={<Presidents />} />
+          <Route
+            path="/sites"
             element={
-              <ComingSoon 
-                title="Heróis Nacionais" 
-                description="Gestão de dados dos heróis nacionais de Angola" 
+              <ComingSoon
+                title="Sítios Culturais"
+                description="Gestão dos sítios culturais e históricos de Angola"
               />
-            } 
-          />
-          <Route 
-            path="/languages" 
-            element={
-              <ComingSoon 
-                title="Idiomas Nacionais" 
-                description="Gestão dos idiomas falados em Angola" 
-              />
-            } 
-          />
-          <Route 
-            path="/sites" 
-            element={
-              <ComingSoon 
-                title="Sítios Culturais" 
-                description="Gestão dos sítios culturais e históricos de Angola" 
-              />
-            } 
+            }
           />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

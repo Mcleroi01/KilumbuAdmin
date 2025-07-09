@@ -9,6 +9,8 @@ import {
   X,
   LogOut,
   LayoutDashboard,
+  TreeDeciduous,
+  BadgeCheck,
 } from "lucide-react";
 import { useAuth } from '../../contexts/AuthContext';
 
@@ -21,6 +23,8 @@ const Sidebar = () => {
     { path: "/", label: "Dashboard", icon: LayoutDashboard },
     { path: "/provinces", label: "Províncias", icon: Map },
     { path: "/heroes", label: "Heróis Nacionais", icon: Users },
+    { path: "/parcs", label: "Parques Naturais", icon: TreeDeciduous },
+    { path: "/presidents", label: "Presidentes", icon: BadgeCheck },
     { path: "/languages", label: "Idiomas Nacionais", icon: Languages },
     { path: "/sites", label: "Sítios Culturais", icon: MapPin },
   ];
