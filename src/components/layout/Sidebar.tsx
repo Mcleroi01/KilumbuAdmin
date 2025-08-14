@@ -11,6 +11,12 @@ import {
   LayoutDashboard,
   TreeDeciduous,
   BadgeCheck,
+  Music,
+  BookOpen,
+  Utensils,
+  Calendar,
+  Landmark,
+  CalendarDays,
 } from "lucide-react";
 import { useAuth } from '../../contexts/AuthContext';
 
@@ -27,6 +33,12 @@ const Sidebar = () => {
     { path: "/presidents", label: "Presidentes", icon: BadgeCheck },
     { path: "/languages", label: "Idiomas Nacionais", icon: Languages },
     { path: "/sites", label: "Sítios Culturais", icon: MapPin },
+    { path: "/historia", label: "História", icon: BookOpen },
+    { path: "/musica", label: "Música", icon: Music },
+    { path: "/cozinha", label: "Cozinha", icon: Utensils },
+    { path: "/feriados", label: "Feriados", icon: Calendar },
+    { path: "/locais-turisticos", label: "Locais Turísticos", icon: Landmark },
+    { path: "/eventos", label: "Eventos", icon: CalendarDays },
   ];
 
   const handleLogout = async () => {
@@ -75,29 +87,31 @@ const Sidebar = () => {
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 p-4 space-y-2">
-            {menuItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = location.pathname === item.path;
-              
-              return (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`
-                    flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors
-                    ${isActive 
-                      ? 'bg-orange-50 text-orange-700 border border-orange-200' 
-                      : 'text-gray-700 hover:bg-gray-50'
-                    }
-                  `}
-                >
-                  <Icon className="w-5 h-5" />
-                  <span className="font-medium">{item.label}</span>
-                </Link>
-              );
-            })}
+          <nav className="flex-1 overflow-y-auto custom-scrollbar px-4 py-2">
+            <div className="space-y-2">
+              {menuItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = location.pathname === item.path;
+                
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setIsOpen(false)}
+                    className={`
+                      flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors
+                      ${isActive 
+                        ? 'bg-orange-50 text-orange-700 border border-orange-200' 
+                        : 'text-gray-700 hover:bg-gray-50'
+                      }
+                    `}
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span className="font-medium">{item.label}</span>
+                  </Link>
+                );
+              })}
+            </div>
           </nav>
 
           {/* Logout */}

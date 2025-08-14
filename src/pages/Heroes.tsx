@@ -1,18 +1,8 @@
 import { useState, useEffect } from "react";
-import {
-  collection,
-  addDoc,
-  updateDoc,
-  doc,
-  deleteDoc,
-  getDocs,
-  orderBy,
-  query,
-} from "firebase/firestore";
-import { db } from "../config/firebase";
 import { HeroiNacional } from "../types";
 import HeroList from "../components/heroes/HeroesList";
 import HeroForm from "../components/heroes/HeroesForm";
+import { heroService } from "../services";
 
 const Heroes = () => {
   const [heroes, setHeroes] = useState<HeroiNacional[]>([]);
@@ -28,13 +18,12 @@ const Heroes = () => {
   const loadHeroes = async () => {
     try {
       setLoading(true);
-      const q = query(collection(db, "heroes"), orderBy("nome", "asc"));
-      const querySnapshot = await getDocs(q);
-      const heroesData = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      })) as HeroiNacional[];
-      setHeroes(heroesData);
+      const heroesData = await heroService.getAllHeroes();
+      // Trier par nom après avoir récupéré les données
+      const sortedHeroes = [...heroesData].sort((a, b) => 
+        a.nome.localeCompare(b.nome)
+      );
+      setHeroes(sortedHeroes);
     } catch (error) {
       console.error("Erro ao carregar heróis:", error);
       alert("Erro ao carregar heróis.");
@@ -48,13 +37,14 @@ const Heroes = () => {
       setFormLoading(true);
 
       if (currentHero?.id) {
-        const docRef = doc(db, "heroes", currentHero.id);
-        await updateDoc(docRef, {
+        // Mise à jour d'un héros existant
+        await heroService.updateHero(currentHero.id, {
           ...heroData,
           updatedAt: new Date(),
         });
       } else {
-        await addDoc(collection(db, "heroes"), {
+        // Création d'un nouveau héros
+        await heroService.createHero({
           ...heroData,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -73,8 +63,12 @@ const Heroes = () => {
   };
 
   const handleDelete = async (id: string) => {
+    if (!window.confirm("Tem certeza que deseja excluir este herói?")) {
+      return;
+    }
+
     try {
-      await deleteDoc(doc(db, "heroes", id));
+      await heroService.deleteHero(id);
       await loadHeroes();
     } catch (error) {
       console.error("Erro ao excluir herói:", error);

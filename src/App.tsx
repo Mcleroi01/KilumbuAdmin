@@ -9,6 +9,8 @@ import Heroes from './pages/Heroes';
 import Linguas from './pages/linguas';
 import Parcs from './pages/Parcs';
 import Presidents from './pages/Presidents';
+import HistoriaPage from './pages/historia';
+import MusicaPage from './pages/musica';
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading } = useAuth();
@@ -45,6 +47,44 @@ const AppRoutes = () => {
                 description="Gestão dos sítios culturais e históricos de Angola"
               />
             }
+          />
+          <Route path="/historia" element={<HistoriaPage />} />
+          <Route path="/musica" element={<MusicaPage />} />
+          <Route 
+            path="/cozinha" 
+            element={
+              <ComingSoon 
+                title="Cozinha Angolana" 
+                description="Gestão dos pratos típicos e receitas tradicionais de Angola" 
+              /> 
+            } 
+          />
+          <Route 
+            path="/feriados" 
+            element={
+              <ComingSoon 
+                title="Feriados Nacionais" 
+                description="Gestão dos feriados e datas comemorativas de Angola" 
+              /> 
+            } 
+          />
+          <Route 
+            path="/locais-turisticos" 
+            element={
+              <ComingSoon 
+                title="Locais Turísticos" 
+                description="Gestão dos pontos turísticos e atrações de Angola" 
+              /> 
+            } 
+          />
+          <Route 
+            path="/eventos" 
+            element={
+              <ComingSoon 
+                title="Eventos Culturais" 
+                description="Gestão dos eventos culturais e festivais de Angola" 
+              /> 
+            } 
           />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

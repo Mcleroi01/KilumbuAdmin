@@ -14,6 +14,8 @@ interface ProvinceListProps {
 
 const ProvinceList = ({ onEdit, onAdd }: ProvinceListProps) => {
   const [provinces, setProvinces] = useState<Province[]>([]);
+  const [filteredProvinces, setFilteredProvinces] = useState<Province[]>([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
   const [deleteId, setDeleteId] = useState<string | null>(null);
 
@@ -21,6 +23,7 @@ const ProvinceList = ({ onEdit, onAdd }: ProvinceListProps) => {
     const fetchData = async () => {
       const data = await getAllProvinces();
       setProvinces(data);
+      setFilteredProvinces(data);
       setLoading(false);
     };
     fetchData();
@@ -33,6 +36,23 @@ const ProvinceList = ({ onEdit, onAdd }: ProvinceListProps) => {
       setProvinces((prev) => prev.filter((p) => p.id !== id));
       setDeleteId(null);
     }
+  };
+
+  // Filtrer les provinces en fonction du terme de recherche
+  useEffect(() => {
+    if (searchTerm.trim() === '') {
+      setFilteredProvinces(provinces);
+    } else {
+      const filtered = provinces.filter(province =>
+        province.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        province.capitale.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredProvinces(filtered);
+    }
+  }, [searchTerm, provinces]);
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
   };
 
   const handleJsonImport = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,6 +73,7 @@ const ProvinceList = ({ onEdit, onAdd }: ProvinceListProps) => {
         await importProvincesFromJson(data);
         const refreshed = await getAllProvinces();
         setProvinces(refreshed);
+        setSearchTerm(''); // Réinitialiser la recherche après l'import
         alert("Provincias importadas com sucesso!");
       } catch (error) {
         console.error("Erro ao importar JSON:", error);
@@ -79,7 +100,7 @@ const ProvinceList = ({ onEdit, onAdd }: ProvinceListProps) => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">
             Províncias de Angola
@@ -87,6 +108,24 @@ const ProvinceList = ({ onEdit, onAdd }: ProvinceListProps) => {
           <p className="text-gray-600 mt-1">
             Gerir dados das províncias angolanas
           </p>
+        </div>
+
+        {/* Barre de recherche */}
+        <div className="w-full md:w-96">
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg className="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={handleSearchChange}
+              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              placeholder="Pesquisar por nome ou capital..."
+            />
+          </div>
         </div>
 
         <div className="flex items-center space-x-3">
@@ -118,79 +157,92 @@ const ProvinceList = ({ onEdit, onAdd }: ProvinceListProps) => {
 
       {/* Province Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {provinces.map((province) => (
-          <div
-            key={province.id}
-            className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow"
-          >
-            <div className="h-48 bg-gray-200 relative">
-              {province.imagePath ? (
-                <img
-                  src={province.imagePath}
-                  alt={province.nom}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="flex items-center justify-center h-full">
-                  <MapPin className="w-12 h-12 text-gray-400" />
-                </div>
-              )}
+        {filteredProvinces.length === 0 ? (
+          <div className="col-span-full text-center py-12">
+            <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+            <p className="text-gray-600 mb-2">Nenhuma província encontrada</p>
+            {searchTerm && (
+              <button
+                onClick={() => setSearchTerm('')}
+                className="mt-2 text-orange-600 hover:text-orange-800 text-sm font-medium"
+              >
+                Limpar pesquisa
+              </button>
+            )}
+          </div>
+        ) : (
+          filteredProvinces.map((province) => (
+            <div
+              key={province.id}
+              className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow"
+            >
+              <div className="h-48 bg-gray-200 relative">
+                {province.imagePath ? (
+                  <img
+                    src={province.imagePath}
+                    alt={province.nom}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center h-full">
+                    <MapPin className="w-12 h-12 text-gray-400" />
+                  </div>
+                )}
 
-              <div className="absolute top-4 right-4 flex space-x-2">
-                <button
-                  onClick={() => onEdit(province)}
-                  className="p-2 bg-white rounded-lg shadow-sm hover:bg-gray-50 transition-colors"
-                >
-                  <Edit3 className="w-4 h-4 text-gray-600" />
-                </button>
-                <button
-                  onClick={() => handleDelete(province.id!)}
-                  disabled={deleteId === province.id}
-                  className="p-2 bg-white rounded-lg shadow-sm hover:bg-red-50 transition-colors"
-                >
-                  <Trash2 className="w-4 h-4 text-red-600" />
-                </button>
-              </div>
-            </div>
-
-            <div className="p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                {province.nom}
-              </h3>
-              <div className="space-y-2 text-sm text-gray-600 mb-4">
-                <div className="flex items-center space-x-2">
-                  <MapPin className="w-4 h-4" />
-                  <span>Capital: {province.capitale}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Users className="w-4 h-4" />
-                  <span>População: {formatNumber(province.population)}</span>
-                </div>
-                <div>
-                  <span>
-                    Superfície: {formatNumber(province.superficie)} km²
-                  </span>
-                </div>
-                <div>
-                  <span>Clima: {province.climat}</span>
+                <div className="absolute top-4 right-4 flex space-x-2">
+                  <button
+                    onClick={() => onEdit(province)}
+                    className="p-2 bg-white rounded-lg shadow-sm hover:bg-gray-50 transition-colors"
+                  >
+                    <Edit3 className="w-4 h-4 text-gray-600" />
+                  </button>
+                  <button
+                    onClick={() => handleDelete(province.id!)}
+                    disabled={deleteId === province.id}
+                    className="p-2 bg-white rounded-lg shadow-sm hover:bg-red-50 transition-colors"
+                  >
+                    <Trash2 className="w-4 h-4 text-red-600" />
+                  </button>
                 </div>
               </div>
 
-              <p className="text-gray-700 text-sm line-clamp-3">
-                {province.description}
-              </p>
-
-              {province.photos?.length > 0 && (
-                <div className="mt-4 pt-4 border-t border-gray-100">
-                  <div className="text-sm text-gray-500">
-                    {province.photos.length} foto
-                    {province.photos.length !== 1 ? "s" : ""} na galeria
+              <div className="p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {province.nom}
+                </h3>
+                <div className="space-y-2 text-sm text-gray-600 mb-4">
+                  <div className="flex items-center space-x-2">
+                    <MapPin className="w-4 h-4" />
+                    <span>Capital: {province.capitale}</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Users className="w-4 h-4" />
+                    <span>População: {formatNumber(province.population)}</span>
+                  </div>
+                  <div>
+                    <span>Superfície: {formatNumber(province.superficie)} km²</span>
+                  </div>
+                  <div>
+                    <span>Clima: {province.climat}</span>
                   </div>
                 </div>
-              )}
+
+                <p className="text-gray-700 text-sm line-clamp-3">
+                  {province.description}
+                </p>
+
+                {province.photos && province.photos.length > 0 && (
+                  <div className="mt-4 pt-4 border-t border-gray-100">
+                    <div className="text-sm text-gray-500">
+                      {province.photos.length} foto
+                      {province.photos.length !== 1 ? "s" : ""} na galeria
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
 
       {/* Empty State */}

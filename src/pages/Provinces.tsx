@@ -1,46 +1,17 @@
-import { useState, useEffect } from 'react';
-import { 
-  collection, 
-  addDoc, 
-  updateDoc, 
-  doc, 
-  deleteDoc, 
-  getDocs,
-  orderBy,
-  query 
-} from 'firebase/firestore';
-import { db } from '../config/firebase';
+import { useState } from 'react';
 import { Province } from '../types';
 import ProvinceList from '../components/provinces/ProvinceList';
 import ProvinceForm from '../components/provinces/ProvinceForm';
+import { updateProvince, createProvince } from '../components/provinces/service/provinceService';
 
 const Provinces = () => {
-  const [provinces, setProvinces] = useState<Province[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [formLoading, setFormLoading] = useState(false);
   const [currentProvince, setCurrentProvince] = useState<Province | null>(null);
   const [showForm, setShowForm] = useState(false);
+  const [formLoading, setFormLoading] = useState(false);
 
-  useEffect(() => {
-    loadProvinces();
-  }, []);
-
-  const loadProvinces = async () => {
-    try {
-      setLoading(true);
-      const q = query(collection(db, 'provinces'), orderBy('name', 'asc'));
-      const querySnapshot = await getDocs(q);
-      const provincesData = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      })) as Province[];
-      setProvinces(provincesData);
-    } catch (error) {
-      console.error('Erro ao carregar províncias:', error);
-      alert('Erro ao carregar províncias. Tente novamente.');
-    } finally {
-      setLoading(false);
-    }
+  const handleEdit = (province: Province) => {
+    setCurrentProvince(province);
+    setShowForm(true);
   };
 
   const handleSubmit = async (provinceData: Province) => {
@@ -49,21 +20,22 @@ const Provinces = () => {
 
       if (currentProvince?.id) {
         // Update existing province
-        const docRef = doc(db, 'provinces', currentProvince.id);
-        await updateDoc(docRef, {
-          ...provinceData,
+        // Convertir les dates au format Date avant l'envoi
+        const { createdAt, updatedAt, ...dataWithoutDates } = provinceData;
+        await updateProvince(currentProvince.id, {
+          ...dataWithoutDates,
           updatedAt: new Date()
         });
       } else {
         // Add new province
-        await addDoc(collection(db, 'provinces'), {
-          ...provinceData,
+        const { id, ...newData } = provinceData;
+        await createProvince({
+          ...newData,
           createdAt: new Date(),
           updatedAt: new Date()
         });
       }
 
-      await loadProvinces();
       setShowForm(false);
       setCurrentProvince(null);
     } catch (error) {
@@ -74,50 +46,33 @@ const Provinces = () => {
     }
   };
 
-  const handleEdit = (province: Province) => {
-    setCurrentProvince(province);
-    setShowForm(true);
-  };
-
-  const handleDelete = async (id: string) => {
-    try {
-      await deleteDoc(doc(db, 'provinces', id));
-      await loadProvinces();
-    } catch (error) {
-      console.error('Erro ao excluir província:', error);
-      alert('Erro ao excluir província. Tente novamente.');
-    }
-  };
-
-  const handleAdd = () => {
-    setCurrentProvince(null);
-    setShowForm(true);
-  };
-
-  const handleCancel = () => {
-    setShowForm(false);
-    setCurrentProvince(null);
-  };
-
-  if (showForm) {
-    return (
-      <ProvinceForm
-        province={currentProvince || undefined}
-        onSubmit={handleSubmit}
-        onCancel={handleCancel}
-        loading={formLoading}
-      />
-    );
-  }
-
   return (
-    <ProvinceList
-      provinces={provinces}
-      onEdit={handleEdit}
-      onDelete={handleDelete}
-      onAdd={handleAdd}
-      loading={loading}
-    />
+    <div className="container mx-auto p-4">
+      {showForm ? (
+        <div className="bg-white p-6 rounded-lg shadow-md mb-6">
+          <h2 className="text-xl font-semibold mb-4">
+            {currentProvince ? 'Editar Província' : 'Nova Província'}
+          </h2>
+          <ProvinceForm
+            province={currentProvince || undefined}
+            onSubmit={handleSubmit}
+            onCancel={() => {
+              setShowForm(false);
+              setCurrentProvince(null);
+            }}
+            loading={formLoading}
+          />
+        </div>
+      ) : (
+        <ProvinceList
+          onEdit={handleEdit}
+          onAdd={() => {
+            setCurrentProvince(null);
+            setShowForm(true);
+          }}
+        />
+      )}
+    </div>
   );
 };
 

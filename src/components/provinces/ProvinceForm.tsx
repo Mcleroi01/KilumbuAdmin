@@ -7,12 +7,19 @@ import { Province } from '../../types';
 import { useState } from 'react';
 
 const provinceSchema = z.object({
-  name: z.string().min(1, 'Nome é obrigatório'),
-  capital: z.string().min(1, 'Capital é obrigatória'),
-  area: z.number().min(1, 'Área deve ser maior que 0'),
-  population: z.number().min(1, 'População deve ser maior que 0'),
-  climate: z.string().min(1, 'Clima é obrigatório'),
+  nom: z.string().min(1, 'Nome é obrigatório'),
+  capitale: z.string().min(1, 'Capital é obrigatória'),
+  superficie: z.union([z.number(), z.string()])
+    .transform(val => typeof val === 'string' ? parseFloat(val) || 0 : val)
+    .refine(val => val > 0, { message: 'Área deve ser maior que 0' }),
+  population: z.union([z.number(), z.string()])
+    .transform(val => typeof val === 'string' ? parseInt(val) || 0 : val)
+    .refine(val => val > 0, { message: 'População deve ser maior que 0' }),
+  climat: z.string().min(1, 'Clima é obrigatório'),
   description: z.string().min(1, 'Descrição é obrigatória'),
+  imagePath: z.string().optional(),
+  mapPath: z.string().optional(),
+  photos: z.array(z.string()).default([]),
 });
 
 type ProvinceFormData = z.infer<typeof provinceSchema>;
@@ -32,12 +39,15 @@ const ProvinceForm = ({ province, onSubmit, onCancel, loading }: ProvinceFormPro
   } = useForm<ProvinceFormData>({
     resolver: zodResolver(provinceSchema),
     defaultValues: {
-      name: province?.nom || '',
-      capital: province?.capitale || '',
-      area: province?.superficie || 0,
+      nom: province?.nom || '',
+      capitale: province?.capitale || '',
+      superficie: province?.superficie || 0,
       population: province?.population || 0,
-      climate: province?.climat || '',
+      climat: province?.climat || '',
       description: province?.description || '',
+      imagePath: province?.imagePath || '',
+      mapPath: province?.mapPath || '',
+      photos: province?.photos || [],
     },
   });
 
@@ -48,10 +58,13 @@ const ProvinceForm = ({ province, onSubmit, onCancel, loading }: ProvinceFormPro
   const onFormSubmit = async (data: ProvinceFormData) => {
     const provinceData: Province = {
       ...data,
-      mainImage,
-      mapImage,
-      gallery,
+      imagePath: mainImage,
+      mapPath: mapImage,
+      photos: gallery,
       id: province?.id,
+      // Convertir les champs au format attendu
+      superficie: typeof data.superficie === 'string' ? parseFloat(data.superficie) || 0 : data.superficie,
+      population: typeof data.population === 'string' ? parseInt(data.population) || 0 : data.population,
     };
 
     await onSubmit(provinceData);
@@ -86,13 +99,13 @@ const ProvinceForm = ({ province, onSubmit, onCancel, loading }: ProvinceFormPro
                 Nome da Província *
               </label>
               <input
-                {...register("name")}
+                {...register("nom")}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 placeholder="Ex: Luanda"
               />
-              {errors.name && (
+              {errors.nom && (
                 <p className="mt-1 text-sm text-red-600">
-                  {errors.name.message}
+                  {errors.nom.message}
                 </p>
               )}
             </div>
@@ -103,13 +116,34 @@ const ProvinceForm = ({ province, onSubmit, onCancel, loading }: ProvinceFormPro
                 Capital *
               </label>
               <input
-                {...register("capital")}
+                {...register("capitale")}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 placeholder="Ex: Luanda"
               />
-              {errors.capital && (
+              {errors.capitale && (
                 <p className="mt-1 text-sm text-red-600">
-                  {errors.capital.message}
+                  {errors.capitale.message}
+                </p>
+              )}
+            </div>
+
+            {/* Clima */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Clima *
+              </label>
+              <select
+                {...register("climat")}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              >
+                <option value="">Selecione o clima</option>
+                <option value="Tropical">Tropical</option>
+                <option value="Seco">Seco</option>
+                <option value="Temperado">Temperado</option>
+              </select>
+              {errors.climat && (
+                <p className="mt-1 text-sm text-red-600">
+                  {errors.climat.message}
                 </p>
               )}
             </div>
@@ -121,13 +155,15 @@ const ProvinceForm = ({ province, onSubmit, onCancel, loading }: ProvinceFormPro
               </label>
               <input
                 type="number"
-                {...register("area", { valueAsNumber: true })}
+                {...register("superficie")}
+                min="0"
+                step="0.01"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                placeholder="Ex: 18827"
+                placeholder="Ex: 2417"
               />
-              {errors.area && (
+              {errors.superficie && (
                 <p className="mt-1 text-sm text-red-600">
-                  {errors.area.message}
+                  {errors.superficie.message}
                 </p>
               )}
             </div>
@@ -157,13 +193,13 @@ const ProvinceForm = ({ province, onSubmit, onCancel, loading }: ProvinceFormPro
               Clima *
             </label>
             <input
-              {...register("climate")}
+              {...register("climat")}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               placeholder="Ex: Tropical seco"
             />
-            {errors.climate && (
+            {errors.climat && (
               <p className="mt-1 text-sm text-red-600">
-                {errors.climate.message}
+                {errors.climat.message}
               </p>
             )}
           </div>

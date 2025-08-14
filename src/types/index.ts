@@ -27,6 +27,8 @@ export interface HeroiNacional {
   reconhecidoOficialmente: boolean;
   dataReconhecimento?: string;
   hommages: string[];
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface LinguaNacional {
